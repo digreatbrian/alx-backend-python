@@ -8,6 +8,7 @@ import json
 import unittest
 from unittest.mock import patch, PropertyMock, Mock
 
+
 class TestGithubOrgClient(unittest.TestCase):
     """ Class for Testing GithubOrgClient """
 
@@ -15,6 +16,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ('google'),
         ('abc')
     ])
+    
     @patch('client.get_json')
     def test_org(self, input, mock):
         """
