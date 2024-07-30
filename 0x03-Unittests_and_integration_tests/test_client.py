@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Module for testing GithubOrgClient """
+"""Module for testing GithubOrgClient."""
 
 from client import GithubOrgClient
 from fixtures import TEST_PAYLOAD
@@ -10,13 +10,12 @@ from unittest.mock import patch, PropertyMock, Mock
 
 
 class TestGithubOrgClient(unittest.TestCase):
-    """ Class for Testing GithubOrgClient """
+    """Class for testing GithubOrgClient."""
 
     @parameterized.expand([
-        ('google'),
-        ('abc')
+        ('google',),
+        ('abc',)
     ])
-    
     @patch('client.get_json')
     def test_org(self, input, mock):
         """
@@ -86,7 +85,7 @@ class TestGithubOrgClient(unittest.TestCase):
     TEST_PAYLOAD
 )
 class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """ Class for Integration test of GithubOrgClient using fixtures """
+    """Class for integration tests of GithubOrgClient using fixtures."""
 
     @classmethod
     def setUpClass(cls):
@@ -101,7 +100,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         cls.mock = cls.get_patcher.start()
 
     def test_public_repos(self):
-        """ Integration test: public repos."""
+        """Integration test: public repos."""
         test_class = GithubOrgClient("google")
 
         self.assertEqual(test_class.org, self.org_payload)
@@ -111,7 +110,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         self.mock.assert_called()
 
     def test_public_repos_with_license(self):
-        """ Integration test for public repos with License."""
+        """Integration test for public repos with license."""
         test_class = GithubOrgClient("google")
 
         self.assertEqual(test_class.public_repos(), self.expected_repos)
